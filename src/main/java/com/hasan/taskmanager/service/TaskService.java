@@ -19,6 +19,11 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
+    public Task getTaskById(Long id) {
+        return taskRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Task not found"));
+    }
+
     public Task createTask(Task task) {
         return taskRepository.save(task);
     }
@@ -28,13 +33,13 @@ public class TaskService {
     }
 
     public Task updateTask(Long id, Task updatedTask) {
-    Task task = taskRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Task not found"));
+        Task task = taskRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Task not found"));
 
-    task.setTitle(updatedTask.getTitle());
-    task.setDescription(updatedTask.getDescription());
-    task.setStatus(updatedTask.getStatus());
+        task.setTitle(updatedTask.getTitle());
+        task.setDescription(updatedTask.getDescription());
+        task.setStatus(updatedTask.getStatus());
 
-    return taskRepository.save(task);
-}
+        return taskRepository.save(task);
+    }
 }

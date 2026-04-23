@@ -21,6 +21,11 @@ public class TaskController {
         return taskService.getAllTasks();
     }
 
+    @GetMapping("/{id}")
+    public Task getTaskById(@PathVariable Long id) {
+        return taskService.getTaskById(id);
+    }
+
     @PostMapping
     public Task createTask(@Valid @RequestBody Task task) {
         return taskService.createTask(task);
@@ -32,7 +37,7 @@ public class TaskController {
     }
 
     @PutMapping("/{id}")
-public Task updateTask(@PathVariable Long id, @RequestBody Task task) {
-    return taskService.updateTask(id, task);
-}
+    public Task updateTask(@PathVariable Long id, @RequestBody Task task) {
+        return taskService.updateTask(id, task);
+    }
 }
