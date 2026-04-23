@@ -1,9 +1,9 @@
 package com.hasan.taskmanager.controller;
 
+import jakarta.validation.Valid;
 import com.hasan.taskmanager.entity.Task;
 import com.hasan.taskmanager.service.TaskService;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -22,7 +22,7 @@ public class TaskController {
     }
 
     @PostMapping
-    public Task createTask(@RequestBody Task task) {
+    public Task createTask(@Valid @RequestBody Task task) {
         return taskService.createTask(task);
     }
 

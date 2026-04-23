@@ -1,5 +1,6 @@
 package com.hasan.taskmanager.entity;
 
+import jakarta.validation.constraints.NotBlank;
 import com.hasan.taskmanager.enums.TaskStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -15,6 +16,7 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     private String title;
 
     private String description;
